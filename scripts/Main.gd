@@ -17,6 +17,7 @@ var game_paused = false
 @onready var background = $Background
 
 var screen_size
+var game_start_time: float = 0.0
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -57,6 +58,7 @@ func _input(event):
 			restart_game()
 
 func start_game():
+	game_start_time = Time.get_time_dict_from_system().hour * 3600 + Time.get_time_dict_from_system().minute * 60 + Time.get_time_dict_from_system().second
 	pipe_timer.start()
 	game_over = false
 	print("Game starting with pipes...")
@@ -110,6 +112,12 @@ func _on_home_pressed():
 	return_to_home()
 
 func _on_bird_died():
+	var current_time = Time.get_time_dict_from_system().hour * 3600 + Time.get_time_dict_from_system().minute * 60 + Time.get_time_dict_from_system().second
+	var duration = int(current_time - game_start_time)
+	
+	# Add game session to database
+	GameData.add_game_session(score, duration)
+	
 	if score > GameData.high_score:
 		GameData.high_score = score
 		GameData.save_game_data()

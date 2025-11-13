@@ -68,7 +68,7 @@ func _on_buy_item(item: Dictionary):
 
 func _on_purchase_complete(success: bool, item: Dictionary):
 	if success:
-		GameData.add_owned_item(item.id)
+		GameData.add_owned_item(item.id, item.name, item.price)
 		GameData.save_game_data()
 		for child in items_container.get_children():
 			child.queue_free()

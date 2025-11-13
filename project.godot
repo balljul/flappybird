@@ -30,6 +30,10 @@ window/size/mode=2
 
 common/enable_pause_aware_picking=true
 
+[plugins]
+
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
