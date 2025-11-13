@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpshykmvql37g"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/yellowbird-midflap.png" id="1_8r3nl"]
+[ext_resource type="Script" path="res://scripts/Bird.gd" id="2_kxotr"]
+[ext_resource type="Texture2D" path="res://assets/sprites/yellowbird-upflap.png" id="3_2hmm8"]
+[ext_resource type="Texture2D" path="res://assets/sprites/yellowbird-downflap.png" id="4_pks1e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g13vm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8r3nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2hmm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pks1e")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4a1h"]
+radius = 12.0
+height = 24.0
+
+[node name="Bird" type="RigidBody2D"]
+gravity_scale = 2.5
+script = ExtResource("2_kxotr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g13vm")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x4a1h")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
