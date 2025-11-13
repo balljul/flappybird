@@ -2,7 +2,7 @@ extends Node
 
 # Stripe test keys (use test keys for school projects)
 const STRIPE_PUBLISHABLE_KEY = "pk_test_51SSb1YBEhxFSvfVU22QUFfc1B7btYBNeSSdoYVEDuHwuYO0kzTSH9tDPmS4OX632FME76ryNuhWQUXZRN745bXPR00e8UC4epe"
-const STRIPE_SECRET_KEY = "sk_test_51SSb1YBEhxFSvfVUJrAa3fNp4gUDXgHAGEz2r7IW1yvXpli5RuGWZlHxAo5IicwOWDS7SF30VEDPaAZ3ZgphH8u900CNtNKEmy"
+const STRIPE_SECRET_KEY = "" # Add your secret key here (never commit real secrets!)
 
 var http_request: HTTPRequest
 
