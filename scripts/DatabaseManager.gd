@@ -90,6 +90,9 @@ func is_item_owned(item_id: String) -> bool:
 	return result and result.size() > 0
 
 func add_game_session(score: int, duration: int = 0, bird_color: String = ""):
+	if not db:
+		print("Database not initialized, cannot add game session")
+		return
 	var query = "INSERT INTO game_sessions (score, duration_seconds, bird_color) VALUES (%d, %d, '%s');" % [score, duration, bird_color]
 	db.query(query)
 
