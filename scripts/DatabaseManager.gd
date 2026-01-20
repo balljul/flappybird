@@ -1,7 +1,6 @@
 extends Node
 
-const SQLite = preload("res://addons/godot-sqlite/godot-sqlite.gd")
-var db: SQLite
+var db
 var db_path = "res://database/flappy_bird.db"
 
 func _ready():
